@@ -1,0 +1,344 @@
+#- Licensed under the MIT License
+#- https://github.com/craigahobbs/hobbs-family-cookbook/blob/master/LICENSE
+
+
+# Markdown book application's hash parameter struct
+struct MarkdownBookParams
+
+    # The markdown book URL
+    optional NonEmptyString url
+
+    # The application command
+    optional MarkdownBookCommand cmd
+
+    # The currently expanded categories
+    optional NonEmptyString[len > 0, len < 1000] categories
+
+    # The markdown file identifier to display. If not present, the title page is displayed.
+    optional NonEmptyString id
+
+    # The base font size (default is 12pt)
+    optional int(>= 8, <= 18) fontSize
+
+    # The recipe scale (default is 1)
+    optional float(>= 0.125, <= 8) scale
+
+
+# Non-empty string typedef
+typedef string(len > 0, len < 1000) NonEmptyString
+
+
+# Markdown book application command union
+union MarkdownBookCommand
+
+    # If true, show the markdown book's index
+    optional bool index
+
+    # If present, search for the markdown book
+    optional string(len < 1000) search
+
+
+# Markdown book struct
+struct MarkdownBook
+
+    # The markdown book's title
+    NonEmptyString title
+
+    # The markdown book's title page markdown file URL
+    optional NonEmptyString titleURL
+
+    # The markdown book's categories
+    MarkdownCategory[len > 0, len < 1000] categories
+
+    # The header color (default is "none")
+    optional Color headerColor
+
+    # The sidebar color (default is "none")
+    optional Color sidebarColor
+
+    # The content color (default is "none")
+    optional Color contentColor
+
+    # The title color (default is "none")
+    optional Color titleColor
+
+
+# A markdown category struct
+struct MarkdownCategory
+
+    # The category title
+    NonEmptyString title
+
+    # The category's markdown files
+    MarkdownFile[len > 0, len < 1000] files
+
+
+# A markdown file struct
+struct MarkdownFile
+
+    # The markdown file's title
+    NonEmptyString title
+
+    # The markdown file's URL
+    NonEmptyString url
+
+
+# A loaded markdown book struct
+struct MarkdownBookLoaded
+
+    # The markdown book's title
+    NonEmptyString title
+
+    # The markdown book's title page markdown file URL
+    optional NonEmptyString titleURL
+
+    # The title page markdown text
+    string(len < 10000) titleText
+
+    # The title page markdown model
+    object titleMarkdown
+
+    # The loaded categories
+    MarkdownCategoryLoaded[len > 0, len < 1000] categories
+
+    # The map of markdown file ID to loaded markdown file model
+    NonEmptyString : MarkdownFileLoaded{len > 0, len < 1000} files
+
+    # The header color
+    Color headerColor
+
+    # The sidebar color
+    Color sidebarColor
+
+    # The content color
+    Color contentColor
+
+    # The title color
+    Color titleColor
+
+
+# A loaded markdown category struct
+struct MarkdownCategoryLoaded
+
+    # The category's title
+    NonEmptyString title
+
+    # The category's loaded markdown files
+    MarkdownFileLoaded[len > 0, len < 1000] files
+
+
+# A loaded markdown file struct
+struct MarkdownFileLoaded
+
+    # The markdown file ID
+    NonEmptyString id
+
+    # The markdown file's title
+    NonEmptyString title
+
+    # The markdown file's category title
+    NonEmptyString category
+
+    # The markdown file's URL
+    NonEmptyString url
+
+    # The markdown file's text
+    string(len < 10000) text
+
+    # The markdown file's markdown model
+    object markdown
+
+    # The recipe markdown info model (if its recipe markdown)
+    optional RecipeInfo recipe
+
+
+# Recipe markdown info struct
+struct RecipeInfo
+
+    # The recipe title
+    NonEmptyString title
+
+    # The recipe's author
+    optional NonEmptyString author
+
+    # The number of servings
+    optional int (> 0) servings
+
+    # The recipe's ingredients
+    RecipeIngredient[len < 1000] ingredients
+
+
+# Recipe markdown ingredient struct
+struct RecipeIngredient
+
+    # The ingredient name
+    NonEmptyString name
+
+    # The ingredient unit
+    RecipeUnit unit
+
+    # The ingredient amount
+    float(> 0) amount
+
+
+# Recipe markdown ingredient unit enum
+enum RecipeUnit
+    count
+    cup
+    lb
+    oz
+    pinch
+    tbsp
+    tsp
+
+
+# CSS color string
+enum Color
+    "none"
+    "aliceblue"
+    "antiquewhite"
+    "aqua"
+    "aquamarine"
+    "azure"
+    "beige"
+    "bisque"
+    "black"
+    "blanchedalmond"
+    "blue"
+    "blueviolet"
+    "brown"
+    "burlywood"
+    "cadetblue"
+    "chartreuse"
+    "chocolate"
+    "coral"
+    "cornflowerblue"
+    "cornsilk"
+    "crimson"
+    "cyan"
+    "darkblue"
+    "darkcyan"
+    "darkgoldenrod"
+    "darkgray"
+    "darkgreen"
+    "darkgrey"
+    "darkkhaki"
+    "darkmagenta"
+    "darkolivegreen"
+    "darkorange"
+    "darkorchid"
+    "darkred"
+    "darksalmon"
+    "darkseagreen"
+    "darkslateblue"
+    "darkslategray"
+    "darkslategrey"
+    "darkturquoise"
+    "darkviolet"
+    "deeppink"
+    "deepskyblue"
+    "dimgray"
+    "dimgrey"
+    "dodgerblue"
+    "firebrick"
+    "floralwhite"
+    "forestgreen"
+    "fuchsia"
+    "gainsboro"
+    "ghostwhite"
+    "gold"
+    "goldenrod"
+    "gray"
+    "green"
+    "greenyellow"
+    "grey"
+    "honeydew"
+    "hotpink"
+    "indianred"
+    "indigo"
+    "ivory"
+    "khaki"
+    "lavender"
+    "lavenderblush"
+    "lawngreen"
+    "lemonchiffon"
+    "lightblue"
+    "lightcoral"
+    "lightcyan"
+    "lightgoldenrodyellow"
+    "lightgray"
+    "lightgreen"
+    "lightgrey"
+    "lightpink"
+    "lightsalmon"
+    "lightseagreen"
+    "lightskyblue"
+    "lightslategray"
+    "lightslategrey"
+    "lightsteelblue"
+    "lightyellow"
+    "lime"
+    "limegreen"
+    "linen"
+    "magenta"
+    "maroon"
+    "mediumaquamarine"
+    "mediumblue"
+    "mediumorchid"
+    "mediumpurple"
+    "mediumseagreen"
+    "mediumslateblue"
+    "mediumspringgreen"
+    "mediumturquoise"
+    "mediumvioletred"
+    "midnightblue"
+    "mintcream"
+    "mistyrose"
+    "moccasin"
+    "navajowhite"
+    "navy"
+    "oldlace"
+    "olive"
+    "olivedrab"
+    "orange"
+    "orangered"
+    "orchid"
+    "palegoldenrod"
+    "palegreen"
+    "paleturquoise"
+    "palevioletred"
+    "papayawhip"
+    "peachpuff"
+    "peru"
+    "pink"
+    "plum"
+    "powderblue"
+    "purple"
+    "red"
+    "rosybrown"
+    "royalblue"
+    "saddlebrown"
+    "salmon"
+    "sandybrown"
+    "seagreen"
+    "seashell"
+    "sienna"
+    "silver"
+    "skyblue"
+    "slateblue"
+    "slategray"
+    "slategrey"
+    "snow"
+    "springgreen"
+    "steelblue"
+    "tan"
+    "teal"
+    "thistle"
+    "tomato"
+    "turquoise"
+    "violet"
+    "wheat"
+    "white"
+    "whitesmoke"
+    "yellow"
+    "yellowgreen"
