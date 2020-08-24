@@ -4,4 +4,4 @@
 
 Markdown Book is a pure-javascript markdown file book viewer.
 
-Click here to [get started](https://craigahobbs.github.io/markdown-book/#id=GettingStarted&categories.0=Introduction).
+Click here to [get started](../#id=GettingStarted&categories.0=Introduction).

@@ -1,0 +1,17 @@
+{
+    "title": "Markdown Book",
+    "titleURL": "Title.md",
+    "headerColor": "lightgrey",
+    "titleColor": "lightblue",
+    "categories": [
+        {
+            "title": "Introduction",
+            "files": [
+                {
+                    "title": "Getting Started",
+                    "url": "GettingStarted.md"
+                }
+            ]
+        }
+    ]
+}

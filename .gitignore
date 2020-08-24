@@ -1,0 +1,7 @@
+.DS_Store
+build/
+node_modules/
+.eslintrc.js
+.makefile
+package.json
+package-lock.json
