@@ -86,6 +86,9 @@ struct MarkdownFile
 # A loaded markdown book struct
 struct MarkdownBookLoaded
 
+    # The markdown file's URL
+    NonEmptyString url
+
     # The markdown book's title
     NonEmptyString title
 
@@ -136,11 +139,11 @@ struct MarkdownFileLoaded
     # The markdown file's title
     NonEmptyString title
 
-    # The markdown file's category title
-    NonEmptyString category
-
     # The markdown file's URL
     NonEmptyString url
+
+    # The markdown file's category title
+    NonEmptyString category
 
     # The markdown file's text
     string(len < 10000) text

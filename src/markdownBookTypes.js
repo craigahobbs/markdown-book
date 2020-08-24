@@ -583,6 +583,15 @@ export const markdownBookTypes =
             "members": [
                 {
                     "doc": [
+                        "The markdown file's URL"
+                    ],
+                    "name": "url",
+                    "type": {
+                        "user": "NonEmptyString"
+                    }
+                },
+                {
+                    "doc": [
                         "The markdown book's title"
                     ],
                     "name": "title",
@@ -910,18 +919,18 @@ export const markdownBookTypes =
                 },
                 {
                     "doc": [
-                        "The markdown file's category title"
+                        "The markdown file's URL"
                     ],
-                    "name": "category",
+                    "name": "url",
                     "type": {
                         "user": "NonEmptyString"
                     }
                 },
                 {
                     "doc": [
-                        "The markdown file's URL"
+                        "The markdown file's category title"
                     ],
-                    "name": "url",
+                    "name": "category",
                     "type": {
                         "user": "NonEmptyString"
                     }
