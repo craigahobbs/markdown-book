@@ -99,6 +99,14 @@ export class MarkdownBook {
 
 
     /**
+     * Helper function to get the current book URL
+     */
+    getBookURL() {
+        return this.config.url !== null ? this.config.url : this.bookURL;
+    }
+
+
+    /**
      * The main entry point for the application. This method renders within the document.body element.
      */
     render() {
@@ -114,7 +122,7 @@ export class MarkdownBook {
         document.documentElement.style.fontSize = `${this.config.fontSize}pt`;
 
         // Book already loaded?
-        if (this.book !== null) {
+        if (this.book !== null && this.book.url === this.getBookURL()) {
             this.renderPageElements();
         } else {
             // Clear the page
@@ -157,7 +165,7 @@ export class MarkdownBook {
      */
     load() {
         // Fetch the markdown book file
-        const bookURL = this.config.url !== null ? this.config.url : this.bookURL;
+        const bookURL = this.getBookURL();
         window.fetch(bookURL).
             then((bookResponse) => bookResponse.json()).
             then((bookResponse) => {
@@ -180,6 +188,7 @@ export class MarkdownBook {
                     then((responses) => {
                         // Create the loaded markdown book model
                         const bookLoaded = {
+                            'url': bookURL,
                             'title': book.title,
                             'titleURL': markdownFileURLs[0],
                             'titleText': responses[0],
