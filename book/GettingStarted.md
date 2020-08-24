@@ -1,5 +1,8 @@
 # Getting Started
 
+The source code for the Markdown Book application is available
+[here](https://github.com/craigahobbs/markdown-book#readme).
+
 The markdown book's hash parameters model is defined
 [here](https://craigahobbs.github.io/chisel/doc/#name=MarkdownBookParams&title=The%20Markdown%20Book%20Model&types=https%3A%2F%2Fcraigahobbs.github.io%2Fmarkdown-book%2FmarkdownBookTypes.json).
 
