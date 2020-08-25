@@ -14,7 +14,7 @@ const rFenced = /^(?<fence>\s*(?:`{3,}|~{3,}))(?:\s*(?<language>.+?))?\s*$/;
 const rList = /^(?<indent>\s*(?<mark>-|\*|\+|[0-9]\.|[1-9][0-9]+\.)\s+)(?<line>.*?)\s*$/;
 const rSpans = new RegExp(
     '(?<br>\\s{2}$)|' +
-        '(?<link>!?\\[)(?<linkText>[\\s\\S]*?)\\]\\((?<linkHref>[^\\s]+?)(?:\\s*"(?<linkTitle>[\\s\\S]*?)"\\s*)?\\)|' +
+        '(?<link>!?\\[)(?<linkText>[\\s\\S]*?)\\]\\((?<linkHref>[^\\s]+?)(?:\\s*"(?<linkTitle>.*?)"\\s*)?\\)|' +
         '(?<linkAlt><)(?<linkAltHref>[[a-z]+:[^\\s]*?)>|' +
         '(?<boldItalic>\\*{3})(?!\\s)(?<boldItalicText>[\\s\\S]*?[^\\s]\\**)\\*{3}|' +
         '(?<bold>\\*{2})(?!\\s)(?<boldText>[\\s\\S]*?[^\\s]\\**)\\*{2}|' +
@@ -313,7 +313,7 @@ export function markdownElements(markdown, url = null, codeBlockLanguages = null
  * @param {?Object} codeBlockLanguages - Optional map of language to code block render function with signature (lines) => elements.
  * @returns {Object[]} The parts array element model
  */
-function markdownPartElements(parts, url = null, codeBlockLanguages = null) {
+function markdownPartElements(parts, url, codeBlockLanguages) {
     const partElements = [];
     for (const markdownPart of parts) {
         // Paragraph?
@@ -367,7 +367,7 @@ function markdownPartElements(parts, url = null, codeBlockLanguages = null) {
  * @param {?string} url - The markdown file's URL
  * @returns {Object[]} The span array element model
  */
-function paragraphSpanElements(spans, url = null) {
+function paragraphSpanElements(spans, url) {
     const spanElements = [];
     for (const span of spans) {
         // Text span?
