@@ -2,9 +2,9 @@
 
 Probably the best example of a markdown book is
 [The Hobbs Family Cookbook](https://craigahobbs.github.io/markdown-book/#categories.0=Introduction&url=https://craigahobbs.github.io/hobbs-family-cookbook/HobbsFamilyCookbook.json).
-It demonstrates the Markdown Book application's ability to organize large numbers of pages and uses
-recipe markdown extensively. It's also a great example of how to [host a markdown book on GitHub
-Pages](https://github.com/craigahobbs/hobbs-family-cookbook).
+It demonstrates the **Markdown Book** application's ability to organize large numbers of pages and
+uses **recipe markdown** extensively. It's also a great example of how to [host a markdown book on
+GitHub Pages](https://github.com/craigahobbs/hobbs-family-cookbook).
 
 Markdown Book can also be used to host a
 [professional-looking resume](https://craigahobbs.github.io/markdown-book/#id=resume&url=https://craigahobbs.github.io/resume/resume.json).
