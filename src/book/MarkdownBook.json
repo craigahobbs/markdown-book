@@ -14,6 +14,10 @@
                 {
                     "title": "Examples",
                     "url": "Examples.md"
+                },
+                {
+                    "title": "Reference",
+                    "url": "Reference.md"
                 }
             ]
         }
