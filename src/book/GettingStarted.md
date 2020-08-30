@@ -45,6 +45,7 @@ GitHub Pages provides an easy way to host a markdown book. Here are the steps in
    earlier.
 
        # Your Book Name
+
        Welcome to my book! Click [here](<YourURL>#id=MyPage) to get started!
 
 6. Now, add your first markdown page file. From your new repository's page, select "Add file >
@@ -53,6 +54,7 @@ GitHub Pages provides an easy way to host a markdown book. Here are the steps in
    your repository.
 
        # My Page
+
        This is my **page**!
 
 7. Finally, add a link to your markdown book to your GitHub repository's README file. The link is of

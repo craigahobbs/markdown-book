@@ -16,6 +16,10 @@
                     "url": "Examples.md"
                 },
                 {
+                    "title": "Recipe Markdown",
+                    "url": "RecipeMarkdown.md"
+                },
+                {
                     "title": "Reference",
                     "url": "Reference.md"
                 }
