@@ -504,7 +504,7 @@ export class MarkdownBook {
                         {'html': 'a', 'attr': {'href': this.linkCategory(title)}, 'elem': {'text': title}},
                         this.book.categories.length !== 1 && this.config.categories.indexOf(title) === -1 ? null : {
                             'html': 'div',
-                            'elem': files.map((file) => [file.title, file.id, file]).sort().map(([,, file]) => ({
+                            'elem': files.map((file) => ({
                                 'html': 'div',
                                 'elem': {'html': 'a', 'attr': {'href': this.linkFile(file)}, 'elem': {'text': file.title}}
                             }))
