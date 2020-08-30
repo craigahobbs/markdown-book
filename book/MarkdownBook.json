@@ -12,12 +12,12 @@
                     "url": "GettingStarted.md"
                 },
                 {
-                    "title": "Examples",
-                    "url": "Examples.md"
-                },
-                {
                     "title": "Recipe Markdown",
                     "url": "RecipeMarkdown.md"
+                },
+                {
+                    "title": "Examples",
+                    "url": "Examples.md"
                 },
                 {
                     "title": "Reference",
