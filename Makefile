@@ -16,7 +16,7 @@ NYC_ARGS := --exclude src/chisel
 
 JSDOC_ARGS := -c jsdoc.json
 
-$(eval $(call COMPILE_CHSL, markdownBookTypes))
+$(eval $(call COMPILE_SMD, markdownBookModel, Markdown Book))
 
 help:
 	@echo '            [gh-pages]'

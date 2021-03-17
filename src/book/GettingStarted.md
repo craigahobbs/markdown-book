@@ -65,4 +65,4 @@ GitHub Pages provides an easy way to host a markdown book. Here are the steps in
 Your book is now live. Try navigating to your book from your README file!
 
 For more Markdown Book configuration options like setting header or title page colors, see the
-[Markdown Book JSON File Format](https://craigahobbs.github.io/chisel/doc/#name=MarkdownBook&title=The%20Markdown%20Book%20Model&types=https%3A%2F%2Fcraigahobbs.github.io%2Fmarkdown-book%2FmarkdownBookTypes.json).
+[Markdown Book JSON File Format](https://craigahobbs.github.io/chisel/doc/#name=MarkdownBook&url=https%3A%2F%2Fcraigahobbs.github.io%2Fmarkdown-book%2FmarkdownBookModel.json).
