@@ -3,7 +3,7 @@
 
 import * as chisel from './chisel/chisel.js';
 import {markdownElements, parseMarkdown} from './chisel/markdown.js';
-import {markdownBookTypes} from './markdownBookTypes.js';
+import {markdownBookModel} from './markdownBookModel.js';
 
 
 /**
@@ -83,7 +83,7 @@ export class MarkdownBook {
         this.config = null;
 
         // Validate the hash parameters (may throw)
-        this.params = chisel.validateType(markdownBookTypes, 'MarkdownBookParams', chisel.decodeParams(params));
+        this.params = chisel.validateType(markdownBookModel.types, 'MarkdownBookParams', chisel.decodeParams(params));
 
         // Set the default hash parameters
         this.config = {
@@ -170,7 +170,7 @@ export class MarkdownBook {
             then((bookResponse) => bookResponse.json()).
             then((bookResponse) => {
                 // Validate the markdown book model
-                const book = chisel.validateType(markdownBookTypes, 'MarkdownBook', bookResponse);
+                const book = chisel.validateType(markdownBookModel.types, 'MarkdownBook', bookResponse);
 
                 // Fetch the markdown files
                 const categoryFiles = [[null, {'url': 'titleURL' in book ? book.titleURL : null}]];
@@ -238,7 +238,7 @@ export class MarkdownBook {
                         }
 
                         // Validate the loaded markdown book model
-                        this.book = chisel.validateType(markdownBookTypes, 'MarkdownBookLoaded', bookLoaded);
+                        this.book = chisel.validateType(markdownBookModel.types, 'MarkdownBookLoaded', bookLoaded);
 
                         // Render
                         this.renderPageElements();
@@ -368,7 +368,7 @@ export class MarkdownBook {
      */
     linkUpDown(paramName, delta) {
         const value = this.config[paramName];
-        const {attr} = markdownBookTypes.MarkdownBookParams.struct.members.find((member) => member.name === paramName);
+        const {attr} = markdownBookModel.types.MarkdownBookParams.struct.members.find((member) => member.name === paramName);
         const valueNew = Math.max(attr.gte, Math.min(attr.lte, value + delta));
         const params = {...this.params};
         params[paramName] = `${valueNew}`;
@@ -853,7 +853,7 @@ export function parseRecipeInfo(markdown) {
 
     // Validate the recipe info model, if any
     if ('author' in recipeInfo || 'servings' in recipeInfo || recipeInfo.ingredients.length !== 0) {
-        return chisel.validateType(markdownBookTypes, 'RecipeInfo', recipeInfo);
+        return chisel.validateType(markdownBookModel.types, 'RecipeInfo', recipeInfo);
     }
 
     return null;

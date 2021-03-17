@@ -2,7 +2,7 @@
 // https://github.com/craigahobbs/chisel/blob/master/LICENSE
 
 import * as chisel from './chisel.js';
-import {markdownTypes} from './markdownTypes.js';
+import {markdownModel} from './markdownModel.js';
 
 
 // Markdown regex
@@ -165,7 +165,8 @@ export function parseMarkdown(markdown) {
                 closeParagraph(`h${matchHeading.groups.heading.length}`);
 
             // Heading (alternate syntax)?
-            } else if (matchHeadingAlt !== null && lineIndent < codeBlockIndent && parts.length === 1 && lines.length) {
+            } else if (matchHeadingAlt !== null && lineIndent < codeBlockIndent && parts.length === 1 &&
+                       lines.length && paragraph === null) {
                 // Add the heading paragraph markdown part
                 closeParagraph(matchHeadingAlt.groups.heading.startsWith('=') ? 'h1' : 'h2');
 
@@ -314,7 +315,7 @@ function paragraphSpans(text) {
  */
 export function markdownElements(markdown, url = null, codeBlockLanguages = null) {
     // Parse the markdown
-    const validatedMarkdown = chisel.validateType(markdownTypes, 'Markdown', markdown);
+    const validatedMarkdown = chisel.validateType(markdownModel.types, 'Markdown', markdown);
 
     // Generate an element model from the markdown model parts
     return markdownPartElements(validatedMarkdown.parts, url, codeBlockLanguages);
